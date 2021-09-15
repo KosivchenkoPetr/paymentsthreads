@@ -1,8 +1,7 @@
 
 
-import java.util.TimerTask;
 
-public class ShowBalance extends TimerTask {
+public class ShowBalance implements Runnable {
     public void run() {
 
         Thread current = Thread.currentThread();
