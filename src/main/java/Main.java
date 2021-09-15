@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     public static HashMap<String, Integer> balance = new HashMap<>();
-    public static HashMap<String, BigDecimal> usdCurrency = new HashMap<String, BigDecimal>();
+    public static HashMap<String, BigDecimal> usdCurrency = new HashMap<>();
     public static Thread threadShowBalance;
 
     public static void main(String[] args) {
@@ -67,8 +67,6 @@ public class Main {
 
             try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
                 for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-                    //String[] subStr = line.split(" ");
-                    //addBalance(subStr[0], Integer.parseInt(subStr[1]));
                     addBalance(line);
                 }
             } catch (FileNotFoundException f) {
@@ -77,7 +75,6 @@ public class Main {
                 e.printStackTrace();
             }
         }
-        ;
     }
 
     public static void startSowBalanceThread() {
@@ -87,10 +84,9 @@ public class Main {
     }
 
     public static void consoleReading() {
-        String accountOperation = "";
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            accountOperation = scanner.nextLine().toUpperCase(Locale.ROOT); //чтобы "USD" и "usd" были одинаковыми
+            String accountOperation = scanner.nextLine().toUpperCase(Locale.ROOT); //"USD" and "usd" must be the same
             if (accountOperation.equals("QUIT")) {
                 System.out.println("Работа программы завершена по команде пользователя");
                 threadShowBalance.interrupt();
@@ -101,7 +97,7 @@ public class Main {
         }
     }
 
-    public static void getUsdCurrency(){
+    public static void getUsdCurrency() {
         usdCurrency.put("HKD", BigDecimal.valueOf(0.13));
         usdCurrency.put("RMB", BigDecimal.valueOf(0.16));
     }
