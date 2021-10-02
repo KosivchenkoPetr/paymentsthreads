@@ -13,7 +13,7 @@ public class ShowBalance implements Runnable {
                         System.out.println(new FormattedBalance().getFormattedBalance(k, v, valueInUSD));
                     }
                 });
-                Thread.sleep(10000);
+                Thread.sleep(60000);
             } catch (InterruptedException e) {
                 current.interrupt();
             }
