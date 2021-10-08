@@ -2,15 +2,18 @@
 
 
 public class ShowBalance implements Runnable {
-    public void run() {
+    private final CurrencyConversion currencyConversion = new CurrencyConversion();
+    private final FormattedBalance formattedBalance = new FormattedBalance();
+
+    public synchronized void run() {
 
         Thread current = Thread.currentThread();
         while (!current.isInterrupted()) {
             try {
                 Main.balance.forEach((k, v) -> {
                     if (v != 0) {
-                        String valueInUSD = new CurrencyConversion().getCurrencyConversion(k, v, Main.usdCurrency.get(k));
-                        System.out.println(new FormattedBalance().getFormattedBalance(k, v, valueInUSD));
+                        String valueInUSD = currencyConversion.getCurrencyConversion(k, v, Main.usdCurrency.get(k));
+                        System.out.println(formattedBalance.getFormattedBalance(k, v, valueInUSD));
                     }
                 });
                 Thread.sleep(60000);
