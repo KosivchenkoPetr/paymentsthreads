@@ -3,10 +3,11 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
 
-    public static HashMap<String, Integer> balance = new HashMap<>();
+    public static ConcurrentHashMap <String, Integer> balance = new ConcurrentHashMap<>();
     public static HashMap<String, BigDecimal> usdCurrency = new HashMap<>();
     public static Thread threadShowBalance;
 
